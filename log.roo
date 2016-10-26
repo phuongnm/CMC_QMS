@@ -1,0 +1,45 @@
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 14:36:54
+project setup --topLevelPackage com.cmc --projectName QMS
+jpa setup --provider HIBERNATE --database MYSQL --databaseName redmine --hostName localhost --userName root --password admin
+entity jpa --class ~.domain.Projects --table projects
+entity jpa --class ~.domain.Users --table users
+entity jpa --class ~.domain.Issues --table issues
+!g lb
+addon list
+addon search --requiresCommand email
+addon search --requiresCommand mail
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 14:43:46
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 15:38:36
+repository jpa --all --package ~.repo
+service --all --apiPackage ~.svr --implPackage ~.impl
+web mvc setup --appServer EMBEDDED 
+web mvc view setup --type THYMELEAF 
+web mvc controller --all --package ~.web --responseType THYMELEAF 
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 15:43:04
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 15:55:00
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 15:55:22
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 16:00:09
+focus --class ~.domain.Issues
+field reference --fieldName projecId --type ~.domain.Projects --cardinality MANY_TO_ONE 
+field reference --fieldName assignedToId --type ~.domain.Users --cardinality MANY_TO_ONE 
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 16:01:50
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 16:39:46
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 16:40:37
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 16:44:28
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 16:44:40
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 17:03:45
+focus --class ~.domain.Issues
+finder add --class ~.domain.Issues --name findByDoneRatioEqualsOrderByIdDesc
+web mvc finder --controller ~.web.IssuesController --finder findByDoneRatioEqualsOrderByIdDesc --responseType THYMELEAF 
+web mvc finder --controller ~.web.IssuesController --finder findByDoneRatioEqualsOrderByIdDesc --responseType THYMELEAF 
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 17:08:21
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2016-10-25 17:12:48
+exit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2016-10-25 17:14:13
